@@ -1,0 +1,355 @@
+:root {
+    --primary-color: #3498db;    /* Bleu principal */
+    --secondary-color: #2ecc71;  /* Vert pour accents (prédictions) */
+    --danger-color: #e74c3c;     /* Rouge pour suppression */
+    --warning-color: #f39c12;    /* Orange pour avertissements (optionnel) */
+    --light-grey-color: #ecf0f1; /* Gris très clair pour fonds doux */
+    --medium-grey-color: #bdc3c7;/* Gris moyen pour bordures */
+    --dark-grey-color: #7f8c8d;  /* Gris foncé pour texte secondaire ou boutons */
+
+    --background-color: #f4f7f6; /* Fond général de la page */
+    --card-background: #ffffff;  /* Fond des cartes */
+    --text-color: #333333;       /* Couleur de texte principale */
+    --light-text-color: #ffffff; /* Couleur de texte sur fonds foncés (boutons) */
+    --border-color: #e0e0e0;     /* Couleur des bordures fines */
+
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 850px; /* Un peu plus large pour accommoder plus d'infos */
+    width: 100%;
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+header h1 {
+    font-weight: 700;
+    font-size: 2em;
+}
+
+.card {
+    background-color: var(--card-background);
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* --- Formulaires --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group input[type="text"] /* Au cas où */ {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1em;
+    font-family: var(--font-family);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* --- Boutons --- */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #2980b9; /* Bleu plus foncé */
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: var(--dark-grey-color);
+}
+.btn-secondary:hover {
+    background-color: #636e72; /* Gris encore plus foncé */
+}
+
+.delete-btn {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b; /* Rouge plus foncé */
+}
+
+/* --- Section Paramètres --- */
+.settings-section .form-group {
+    margin-bottom: 15px;
+}
+.settings-section h2 {
+    color: var(--dark-grey-color);
+    border-bottom-color: var(--dark-grey-color);
+}
+.data-management {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+.data-management .btn {
+    flex-grow: 1; /* Permet aux boutons de s'étendre si l'espace le permet */
+}
+
+
+/* --- Section Historique (Tableau) --- */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px; /* Un peu moins de marge que card h2 */
+}
+
+th, td {
+    padding: 12px 10px; /* Ajusté pour plus de colonnes */
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95em; /* Légère réduction pour plus de densité */
+}
+
+th {
+    background-color: #f0f6fa;
+    color: var(--primary-color);
+    font-weight: 600;
+    white-space: nowrap; /* Empêche le retour à la ligne des en-têtes */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #eef5fb;
+}
+
+#noDataMessage {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-style: italic;
+    background-color: var(--light-grey-color);
+    border-radius: var(--border-radius);
+}
+
+/* --- Section Résumé --- */
+.summary-section {
+    background-color: #eaf6ff; /* Fond légèrement bleuté */
+}
+
+.summary-section p {
+    margin-bottom: 12px;
+    font-size: 1.05em;
+}
+
+.summary-section p:last-child {
+    margin-bottom: 0;
+}
+
+.summary-section strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* --- Section Prédictions --- */
+.predictions-section {
+    background-color: #e8fdf5; /* Fond légèrement verdâtre */
+}
+.predictions-section h2 {
+    color: var(--secondary-color);
+    border-bottom-color: var(--secondary-color);
+}
+
+.predictions-section > p { /* Le paragraphe d'intro */
+    margin-bottom: 15px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.prediction-item {
+    margin-bottom: 12px;
+    padding: 12px 15px;
+    background-color: var(--card-background);
+    border-radius: 6px; /* Un peu moins arrondi que la carte principale */
+    border: 1px solid #d4f0e0; /* Bordure en accord avec le fond verdâtre */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Pour les petits écrans */
+}
+.prediction-item:last-child {
+    margin-bottom: 0;
+}
+
+.prediction-item strong {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-right: 10px; /* Espace avant les valeurs */
+}
+
+.prediction-item span {
+    color: var(--secondary-color);
+    font-weight: 600;
+    text-align: right;
+}
+
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9em;
+    color: #777;
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- Classes Utilitaires --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    header h1 {
+        font-size: 1.8em;
+    }
+    .card h2 {
+        font-size: 1.3em;
+    }
+    .btn {
+        padding: 10px 18px;
+        font-size: 0.95em;
+    }
+    th, td {
+        padding: 10px 8px;
+        font-size: 0.9em;
+    }
+    .prediction-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .prediction-item span {
+        text-align: left;
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 15px;
+    }
+    header h1 {
+        font-size: 1.6em;
+    }
+    .btn, .data-management .btn { /* Pour les boutons de gestion des données également */
+        width: 100%;
+        margin-bottom: 10px; /* Espace entre les boutons empilés */
+    }
+    .data-management .btn:last-child {
+        margin-bottom: 0;
+    }
+    .data-management {
+        flex-direction: column; /* Empile les boutons sur mobile */
+    }
+
+    .form-group input[type="date"],
+    .form-group input[type="number"] {
+        font-size: 0.95em;
+    }
+    .summary-section p, .prediction-item {
+        font-size: 0.95em;
+    }
+}

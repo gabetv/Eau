@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi Consommation d'Eau Avancé</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💧 Suivi Avancé de Consommation d'Eau</h1>
+        </header>
+
+        <main>
+            <section class="settings-section card">
+                <h2>Paramètres</h2>
+                <div class="form-group">
+                    <label for="waterPrice">Prix de l'eau (€/m³) :</label>
+                    <input type="number" id="waterPrice" step="0.01" min="0" placeholder="Ex: 3.50">
+                </div>
+                <div class="data-management">
+                    <button id="exportDataBtn" class="btn btn-secondary">Exporter les Données (JSON)</button>
+                    <input type="file" id="importFile" accept=".json" style="display: none;">
+                    <button id="importDataBtn" class="btn btn-secondary">Importer les Données (JSON)</button>
+                </div>
+            </section>
+
+            <section class="input-section card">
+                <h2>Nouveau Relevé</h2>
+                <form id="readingForm">
+                    <div class="form-group">
+                        <label for="readingDate">Date du relevé :</label>
+                        <input type="date" id="readingDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="readingValue">Valeur du compteur (m³) :</label>
+                        <input type="number" id="readingValue" step="0.001" min="0" placeholder="Ex: 123.456" required>
+                    </div>
+                    <button type="submit" class="btn">Ajouter le relevé</button>
+                </form>
+            </section>
+
+            <section class="history-section card">
+                <h2>Historique des Relevés</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Relevé (m³)</th>
+                                <th>Consommation (m³)</th>
+                                <th>Coût (€)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="readingsTableBody">
+                            <!-- Les lignes de données seront injectées ici par JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <p id="noDataMessage" class="hidden">Aucun relevé pour le moment. Ajoutez-en un !</p>
+            </section>
+
+            <section class="summary-section card hidden" id="summaryCard">
+                <h2>Résumé</h2>
+                <p>Consommation totale sur la période : <strong id="totalConsumption">N/A</strong> m³</p>
+                <p>Coût total sur la période : <strong id="totalCost">N/A</strong> €</p>
+                <p>Consommation moyenne par jour : <strong id="averageDailyConsumption">N/A</strong> m³/jour</p>
+                <p>Coût moyen par jour : <strong id="averageDailyCost">N/A</strong> €/jour</p>
+            </section>
+
+            <section class="predictions-section card hidden" id="predictionsCard">
+                <h2>Prédictions</h2>
+                <p>Basées sur votre consommation moyenne quotidienne actuelle.</p>
+                <div class="prediction-item">
+                    <strong>Prochains 7 jours :</strong>
+                    <span id="pred7DaysConsumption">N/A</span> m³ (<span id="pred7DaysCost">N/A</span> €)
+                </div>
+                <div class="prediction-item">
+                    <strong>Prochains 30 jours :</strong>
+                    <span id="pred30DaysConsumption">N/A</span> m³ (<span id="pred30DaysCost">N/A</span> €)
+                </div>
+                <div class="prediction-item">
+                    <strong>Prochaine Année (365 jours) :</strong>
+                    <span id="pred365DaysConsumption">N/A</span> m³ (<span id="pred365DaysCost">N/A</span> €)
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>Créé avec ❤️ - <a href="https://github.com/VOTRE_NOM_UTILISATEUR_GITHUB" target="_blank">Mon GitHub</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
